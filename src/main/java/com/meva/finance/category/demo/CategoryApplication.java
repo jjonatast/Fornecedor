@@ -10,4 +10,8 @@ public class CategoryApplication {
 		SpringApplication.run(CategoryApplication.class, args);
 	}
 
+
+
+
+
 }
