@@ -1,4 +1,4 @@
-package com.meva.finance.category.demo;
+package com.meva.finance.category;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,8 @@ public class CategoryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CategoryApplication.class, args);
+
+
 	}
 
 
