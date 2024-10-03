@@ -20,7 +20,7 @@ public class ServiceCategory {
     public Category saveCategory(DtoCategory dtoCategory) {
         Integer id_category = dtoCategory.getId_category();
 
-
+        {}
         if (id_category == 0) {
 
             Category newCategory = Category.builder().description(dtoCategory.getDescription()).build();
