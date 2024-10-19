@@ -6,6 +6,9 @@ import com.meva.finance.category.repository.RepositoryCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ServiceCategory {
@@ -15,22 +18,28 @@ public class ServiceCategory {
     @Autowired
     public ServiceCategory(RepositoryCategory repositoryCategory) {
         this.repositoryCategory = repositoryCategory;
+
     }
 
-    public Category saveCategory(DtoCategory dtoCategory) {
-        Integer id_category = dtoCategory.getId_category();
-
-        {}
-        if (id_category == 0) {
-
-            Category newCategory = Category.builder().description(dtoCategory.getDescription()).build();
-            newCategory = repositoryCategory.save(newCategory);
-            dtoCategory.setId_category(newCategory.getId_category());
-
+    private String cleanDescription(String description) {
+        if (description == null || description.isEmpty()) {
+            return ""; //
         }
-        Category category = dtoCategory.converter();
-        return dtoCategory.converter();
+
+        List<String> words = Arrays.asList(description.trim().split("\\s+"));
+        List<String> cleanedWords = words.stream()
+                .filter(word -> word.length() >= 3)
+                .collect(Collectors.toList());
+
+        return String.join(" ", cleanedWords);
     }
 
+public DtoCategory findByCategory (String description){
+        Category category = repositoryCategory.findByDescription(description)
+                .orElseThrow(() -> new IllegalArgumentException("NÃO ENCONTRADO " + description));
+                return new DtoCategory(category);
 }
+}
+
+
 

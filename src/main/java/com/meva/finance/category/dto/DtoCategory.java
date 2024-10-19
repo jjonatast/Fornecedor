@@ -16,14 +16,21 @@ public class DtoCategory {
 
     @NotBlank
     private String description;
-    @NotBlank
+
     private Integer id_category;
 
-    public Category converter(){
-        return Category.builder()
-                .id_category(id_category)
-                .description(description).build();
+    public DtoCategory(Category category){
+        this.id_category = category.getId_category();
+        this.description = category.getDescription();
+
     }
 
+    @Override
+    public String toString() {
+        return "DtoCategory{" +
+                "id_category=" + id_category +
+                ", description='" + description + '\'' +
+                '}';
+    }
 
 }

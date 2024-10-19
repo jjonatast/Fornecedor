@@ -6,17 +6,18 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Table(name = "category")
+@Table(name = "sub_category")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-public class Category {
+
+public class SubCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_category;
+    private Integer id_sub_category;
     private String description;
 
 

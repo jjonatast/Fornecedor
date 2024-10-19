@@ -1,16 +1,14 @@
 package com.meva.finance.category.api;
 
-import java.util.logging.Logger;
+import java.util.List;
 
 import com.meva.finance.category.dto.DtoCategory;
+import com.meva.finance.category.model.Category;
 import com.meva.finance.category.service.ServiceCategory;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import javax.naming.ldap.Control;
 @Slf4j
 @RestController
 @RequestMapping ("/category")
@@ -19,15 +17,13 @@ public class ControllerCategory {
 
     private final ServiceCategory serviceCategory;
 
-    public ControllerCategory(ServiceCategory serviceCategory){
+    public ControllerCategory(ServiceCategory serviceCategory) {
         this.serviceCategory = serviceCategory;
     }
 
-    @PostMapping("/create")
-    public void createCategory(@RequestBody  DtoCategory dtoCategory) {
-        log.info("Received user: {}", dtoCategory);
-        serviceCategory.saveCategory(dtoCategory);
+    @GetMapping("/produto/{description}") // Aqui está o parâmetro
+    public ResponseEntity<DtoCategory> findByCategory(@PathVariable String description) {
+        DtoCategory dtoCategory = serviceCategory.findByCategory(description);
+        return ResponseEntity.ok(dtoCategory);
     }
-
-
-    }
+}
