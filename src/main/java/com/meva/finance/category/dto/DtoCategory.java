@@ -1,6 +1,7 @@
 package com.meva.finance.category.dto;
 
 import com.meva.finance.category.model.Category;
+import com.meva.finance.category.model.SubCategory;
 import lombok.*;
 
 import javax.persistence.Table;

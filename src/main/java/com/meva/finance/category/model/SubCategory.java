@@ -1,8 +1,10 @@
 package com.meva.finance.category.model;
 
+
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,11 +16,16 @@ import javax.persistence.*;
 
 
 public class SubCategory {
-
     @Id
-    private Integer id_category;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_sub_category;
+    @NotNull
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
+    private Category category;
+
 
 
 }
