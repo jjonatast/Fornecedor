@@ -20,14 +20,6 @@ public class CompraController {
     public void realizaCompra(@RequestBody CompraDTO compra){
         compraService.realizaCompra(compra);
 
-
-
-
-
-
-
-
-        System.out.println(compra);
     }
 
 }
