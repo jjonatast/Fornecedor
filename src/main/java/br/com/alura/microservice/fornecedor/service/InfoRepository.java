@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface InfoRepository extends CrudRepository<InfoFornecedor, Long> {
+
     Optional<InfoFornecedor> findByEstado(String estado);
 }
 
